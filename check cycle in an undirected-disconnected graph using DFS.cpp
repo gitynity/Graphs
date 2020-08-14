@@ -7,7 +7,6 @@ class graph
 	int v;				  //number of vertices
 	vector<int> adj[100]; //adjacency list
 	bool visited[100];
-	bool parent[100];
 public:
 	graph(int);
 	void addedge(int, int);
