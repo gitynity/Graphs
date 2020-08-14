@@ -7,7 +7,7 @@ class graph
 	int v;				  //number of vertices
 	vector<int> adj[100]; //adjacency list
 	bool visited[100];
-	bool parent[100];
+	bool parent[100];	//to keep track of all the nodes in the dfs recrsion stack
 public:
 	graph(int);
 	void addedge(int, int);
@@ -46,7 +46,7 @@ void graph::print_adjacency_list()
 bool graph::modified_dfs(int node)
 {
 	visited[node] = true;
-	parent[node] = true;
+	parent[node] = true;		//node entered the dfs recursion stack
 
 	for(auto i:adj[node])
 	{
@@ -55,11 +55,11 @@ bool graph::modified_dfs(int node)
 			if(modified_dfs(i)==true)
 				return true;
 		}
-		else if(parent[i]==true)	// i.e if visited[i]==true but i is not parent of the current node
+		else if(parent[i]==true)	// means that if visited[i]==true and i is present in the recursion call stack , i.e. i is a parent/ancestor
 			return true;
 	}
-	parent[node]=false;
-
+	
+	parent[node]=false;	//node about to exit the recursion call stack in the following return statement , so lets make parent[node]=false
 	return false;
 }
 
