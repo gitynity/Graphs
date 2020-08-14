@@ -22,7 +22,6 @@ graph::graph(int n)
 	for (int i = 0; i < n; i++) //initialised visited array as false for all vertices
 		{
 			visited[i] = false;
-			parent[i] = false;
 		}
 }
 
